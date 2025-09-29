@@ -134,8 +134,7 @@
         <div id="notifiyBox" class="notifiyBox" style="display:none"></div>
         <div id=masthead class=noselect>
             <div style="float:left">{{{titlehtml}}}</div>
-            <div class="title" onclick="go(1,event)">{{{title1}}}</div>
-            <div class="title2">{{{title2}}}</div>
+            <img class="control-logo" src="images/white-logo.png" />
             <div style="float:right">
                 <div id=notificationCount onclick="clickNotificationIcon()" class="unselectable" style="display: none;"
                     title="Click to view current notifications">0</div>
@@ -143,7 +142,7 @@
             <p id="logoutControl"><span id=logoutControlSpan class="logoncontrolspan"></span><span id=idleTimeoutNotify
                     style="color:yellow"></span></p>
             <img id="topMenuIcon" class=noselect
-                style="position:absolute;right:0;top:10px;color:#c8c8c8;font-size:44px;margin-right:8px;cursor:pointer;display:none"
+                style="position:absolute;right:0;top:15px;color:#FFFFFF;font-size:44px;margin-right:8px;cursor:pointer;display:none"
                 onclick=topMenu() src="/images/3bars-30.png" width=30 height=30 />
             <div class=textnewui id=textnewui onmouseup=toggleBootstrapUIMode() onkeypress="if (event.key=='Enter') { toggleBootstrapUIMode(); }">
                 <b>Try the new MeshCentral UI</b>
@@ -155,7 +154,6 @@
                 <a class="nav-link active text-center text-white lbbuttonsel" id="LeftMenuMyDevices" href="#" data-target="general" onmouseup=go(1,event) onkeypress="if (event.key=='Enter') { go(1); }"><i class="fa-solid fa-computer me-2"></i></a>
                 <a class="nav-link text-center text-white" id="LeftMenuMyAccount" href="#" data-target="account" onmouseup=go(2,event) onkeypress="if (event.key=='Enter') { go(2); }"><i class="fa-solid fa-user-gear me-2"></i></a>
                 <a class="nav-link text-center text-white" id="LeftMenuMyEvents" href="#" data-target="events" onmouseup=go(3,event) onkeypress="if (event.key=='Enter') { go(3); }"><i class="fa-solid fa-calendar-alt me-2"></i></a>
-                <a class="nav-link text-center text-white" id="LeftMenuMyFiles" href="#" data-target="files" onmouseup=go(5,event) onkeypress="if (event.key=='Enter') { go(5); }"><i class="fa-solid fa-folder-open me-2"></i></a>
                 <a class="nav-link text-center text-white" id="LeftMenuMyUsers" href="#" data-target="users" onmouseup=go(4,event) onkeypress="if (event.key=='Enter') { go(4); }"><i class="fa-solid fa-users me-2"></i></a>
                 <a class="nav-link text-center text-white" id="LeftMenuMyServer" href="#" data-target="server" onmouseup=go(6,event) onkeypress="if (event.key=='Enter') { go(6); }"><i class="fa-solid fa-server me-2"></i></a>
             </nav>
@@ -239,8 +237,6 @@
                                     onkeypress="if (event.key == 'Enter') go(11)">Desktop</td>
                                 <td tabindex=0 id=MainDevTerminal class="topbar_td style3x" onmouseup=go(12,event)
                                     onkeypress="if (event.key == 'Enter') go(12)">Terminal</td>
-                                <td tabindex=0 id=MainDevFiles class="topbar_td style3x" onmouseup=go(13,event)
-                                    onkeypress="if (event.key == 'Enter') go(13)">Files</td>
                                 <td tabindex=0 id=MainDevEvents class="topbar_td style3x" onmouseup=go(16,event)
                                     onkeypress="if (event.key == 'Enter') go(16)">Events</td>
                                 <td tabindex=0 id=MainDevInfo class="topbar_td style3x" onmouseup=go(17,event)
@@ -366,16 +362,16 @@
                             title="Go to last page" style="display:none;margin-right:12px">
                             <div class="viewSelector8"></div>
                         </div>
-                        <span role=button tabindex=0 id=devViewButton1 class="fa-layers fa-fw fa-xl" onclick=onDeviceViewChange(1) onkeypress="if (event.key == 'Enter') { onDeviceViewChange(1); }" title="Columns">
+                        {{!-- <span role=button tabindex=0 id=devViewButton1 class="fa-layers fa-fw fa-xl" onclick=onDeviceViewChange(1) onkeypress="if (event.key == 'Enter') { onDeviceViewChange(1); }" title="Columns">
                             <i class="fa-solid fa-bars" data-fa-transform="shrink-8 right-4 up-2"></i>
                             <i class="fa-solid fa-bars" data-fa-transform="shrink-8 left-4 up-2"></i>
                             <i class="fa-solid fa-bars" data-fa-transform="shrink-8 right-4 down-3"></i>
                             <i class="fa-solid fa-bars" data-fa-transform="shrink-8 left-4 down-3"></i>
-                        </span>
-                        <span role=button tabindex=0 id=devViewButton2 class="fa-layers fa-fw fa-xl" onclick=onDeviceViewChange(2) onkeypress="if (event.key == 'Enter') { onDeviceViewChange(2); }" title="List">
+                        </span> --}}
+                        {{!-- <span role=button tabindex=0 id=devViewButton2 class="fa-layers fa-fw fa-xl" onclick=onDeviceViewChange(2) onkeypress="if (event.key == 'Enter') { onDeviceViewChange(2); }" title="List">
                             <i class="fa-solid fa-bars"></i>
-                        </span>
-                        <span role=button tabindex=0 id=devViewButton3 class="fa-layers fa-fw fa-xl" onclick=onDeviceViewChange(3) onkeypress="if (event.key == 'Enter') { onDeviceViewChange(3); }" title="Desktops">
+                        </span> --}}
+                        {{!-- <span role=button tabindex=0 id=devViewButton3 class="fa-layers fa-fw fa-xl" onclick=onDeviceViewChange(3) onkeypress="if (event.key == 'Enter') { onDeviceViewChange(3); }" title="Desktops">
                             <i class="fa-solid fa-square" data-fa-transform="shrink-9 up-4 left-4"></i>
                             <i class="fa-solid fa-square" data-fa-transform="shrink-9 up-4 right-4"></i>
                             <i class="fa-solid fa-square" data-fa-transform="shrink-9 down-4 left-4"></i>
@@ -391,7 +387,7 @@
                         </span>
                         <span role=button tabindex=0 id=devViewButton4 class="fa-layers fa-fw fa-xl" onclick=onDeviceViewChange(4) onkeypress="if (event.key == 'Enter') { onDeviceViewChange(4); }" title="Map" style="display:none">
                             <i class="fa-solid fa-map-location-dot"></i>
-                        </span>
+                        </span> --}}
                     </div>
                 </div>
                 <div id="devListToolbarSpan" class="noselect d-flex align-items-center p-1">
@@ -729,43 +725,7 @@
                         <img id=MainMeshImage src="serverpic.ashx">
                         <h1>My Server</h1>
                     </div>
-                    <div id="p2ServerActions">
-                        <p><strong>Server actions</strong></p>
-                        <div style="margin-left:25px">
-                            <div id="p2ServerActionsBackup">
-                                <div class="p2AccountActions"><span
-                                        style="display:none"><strong>&#x2713;</strong></span></div><a id="p6backuplink"
-                                    href="{{{domainurl}}}backup.zip" rel="noreferrer noopener" target="_blank">Download server backup</a>
-                            </div>
-                            <div id="p2ServerActionsRestore">
-                                <div class="p2AccountActions"><span
-                                        style="display:none"><strong>&#x2713;</strong></span></div><a href=#
-                                    onclick="return server_showRestoreDlg()">Restore server with backup</a>
-                            </div>
-                            <div id="p2ServerActionsGoogleBackup" style="display:none">
-                                <div class="p2AccountActions"><span id="p2ServerActionsGoogleBackupCheck"
-                                        style="display:none"><strong>&#x2713;</strong></span></div><span><a href=#
-                                        onclick="return server_setupGoogleDriveBackup()">Google Drive backup</a><br /></span>
-                            </div>
-                            <div id="p2ServerActionsVersion">
-                                <div class="p2AccountActions"><span
-                                        style="display:none"><strong>&#x2713;</strong></span></div><a href=#
-                                    onclick="return server_showVersionDlg()">Check server version</a>
-                            </div>
-                            <div id="p2ServerActionsErrors">
-                                <div class="p2AccountActions"><span
-                                        style="display:none"><strong>&#x2713;</strong></span></div><a href=#
-                                    onclick="return server_showErrorsDlg()">Show server error log</a>
-                            </div>
-                            <div id="p2ServerActionsConfig">
-                                <div class="p2AccountActions"><span
-                                        style="display:none"><strong>&#x2713;</strong></span></div><a href=#
-                                    onclick="return server_showConfigDlg()">Show server configuration</a>
-                            </div>
-                        </div>
-                        <br />
-                    </div>
-                    <strong>Server Statistics</strong><br /><br />
+                    
                     <div id="serverStats">
                         <div id="serverCpuChartView" style="display:none">
                             <div class="chartViewCanvas" style="height:40px; text-align:center"><canvas
@@ -1700,10 +1660,10 @@
                 <div class="row">
                     <div class="col-md-6 d-flex gap-2">
                     </div>
-                    <div class="col-md-6">
+                    {{!-- <div class="col-md-6">
                         <a id="verifyEmailId2" style="display:none" href=# onclick="account_showVerifyEmail()">Verify Email</a>
                         &nbsp;<a id="termsLinkFooter" href=terms>Terms &amp; Privacy</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -2153,7 +2113,7 @@
             showRealNames = (getstore('showRealNames', 0) == 1);
             Q('RealNameCheckBox').checked = showRealNames;
             Q('DevFilterSelect').value = getstore('devFilterSelect', 0);
-            Q('viewselect').value = getstore('deviceView', 1);
+            Q('viewselect').value = 2;
             Q('DeskControl').checked = (getstore('DeskControl', 1) == 1);
             QV('accountChangeEmailAddressSpan', (features & 0x200000) == 0);
 
@@ -2725,7 +2685,6 @@
             QV('p2ServerActionsErrors', (siteRights & 16) && ((serverFeatures & 8) != 0));
             QV('p2ServerActionsConfig', (siteRights & 16) && ((serverFeatures & 128) != 0));
             QV('MainMenuMyFiles', siteRights & 8);
-            QV('LeftMenuMyFiles', siteRights & 8);
             if (((siteRights & 8) == 0) && (xxcurrentView == 5)) { setDialogMode(0); go(1); }
             if (currentNode != null) { gotoDevice(currentNode._id, xxcurrentView, true); }
 
@@ -3990,6 +3949,9 @@
                                 node.users = message.event.node.users;
                                 node.host = message.event.node.host;
                                 node.desc = message.event.node.desc;
+                                node.warranty = message.event.node.warranty
+                                node.purchase = message.event.node.purchase
+                                node.location = message.event.node.location
                                 node.ip = message.event.node.ip;
                                 node.osdesc = message.event.node.osdesc;
                                 node.publicip = message.event.node.publicip;
@@ -4634,12 +4596,9 @@
             x += '<label><input id=d2c12 type=checkbox class="form-check-input me-2"' + ((deviceViewSettings.devsCols.indexOf('windowsupdate') >= 0) ? ' checked' : '') + '>' + "Windows Update" + '</label><br />';
             x += '<label><input id=d2c13 type=checkbox class="form-check-input me-2"' + ((deviceViewSettings.devsCols.indexOf('windowsfirewall') >= 0) ? ' checked' : '') + '>' + "Windows Firewall" + '</label><br />';
             x += '<label><input id=d2c14 type=checkbox class="form-check-input me-2"' + ((deviceViewSettings.devsCols.indexOf('lastbootuptime') >= 0) ? ' checked' : '') + '>' + "Last Boot Up Time" + '</label><br />';
-            x += '<label><input id=d2c1 type=checkbox class="form-check-input me-2"' + ((deviceViewSettings.devsCols.indexOf('links') >= 0) ? ' checked' : '') + '>' + "MeshCentral Router Links" + '</label><br />';
             x += '<label><input id=d2c2 type=checkbox class="form-check-input me-2"' + ((deviceViewSettings.devsCols.indexOf('user') >= 0) ? ' checked' : '') + '>' + "Logged in users" + '</label><br />';
             x += '<label><input id=d2c3 type=checkbox class="form-check-input me-2"' + ((deviceViewSettings.devsCols.indexOf('ip') >= 0) ? ' checked' : '') + '>' + "Agent IP address" + '</label><br />';
             x += '<label><input id=d2c4 type=checkbox class="form-check-input me-2"' + ((deviceViewSettings.devsCols.indexOf('conn') >= 0) ? ' checked' : '') + '>' + "Server Connectivity" + '</label><br />';
-            x += '<label><input id=d2c15 type=checkbox class="form-check-input me-2"' + ((deviceViewSettings.devsCols.indexOf('amthost') >= 0) ? ' checked' : '') + '>' + "Intel&reg; AMT hostname" + '</label><br />';
-            x += '<label><input id=d2c17 type=checkbox class="form-check-input me-2"' + ((deviceViewSettings.devsCols.indexOf('amtstate') >= 0) ? ' checked' : '') + '>' + "Intel&reg; AMT state" + '</label><br />';
             x += '<label><input id=d2c7 type=checkbox class="form-check-input me-2"' + ((deviceViewSettings.devsCols.indexOf('lastseen') >= 0) ? ' checked' : '') + '>' + "Last Seen" + '</label><br />';
             setModalContent('xxAddAgent', "Device View Columns", x);
             showModal('xxAddAgentModal', 'idx_dlgOkButton', () => onDeviceViewSettingsEx());
@@ -5375,6 +5334,7 @@
                 }
 
                 if (node.desc && (deviceViewSettings.devsCols.indexOf('desc') >= 0)) { name = '<div class="flex-grow-1">' + name + '</div><div style=float:right' + (stars[node._id] == 1 ? ';padding-right:15px' : '') + '>' + EscapeHtml(node.desc) + '</div>'; }
+                if (node.warranty && (deviceViewSettings.devsCols.indexOf('warranty') >= 0)) { name = '<div class="flex-grow-1">' + name + '</div><div style=float:right' + (stars[node._id] == 1 ? ';padding-right:15px' : '') + '>' + EscapeHtml(node.warranty) + '</div>'; }
 
                 var collapseName = node.meshid;
                 if (sort == 1) { collapseName = ('pwr:' + (node.pwr ? node.pwr : 0)); }
@@ -6137,7 +6097,7 @@
             meshfilename = meshfilename.split('\\').join('').split('/').join('').split(':').join('').split('*').join('').split('?').join('').split('"').join('').split('<').join('').split('>').join('').split('|').join('').split(' ').join('').split('\'').join('');
 
             // Windows agent install
-            x += '<div id=agins_windows>' + format("To add a new computer to device group \"{0}\", download the mesh agent and install it the computer to manage. This agent has server and device group information embedded within it.", EscapeHtml(mesh.name)) + '<br /><br />';
+            x += '<div id=agins_windows>' + format("To add a new computer to device group \"{0}\", download the connect360 agent and install it the computer to manage. This agent has server and device group information embedded within it.", EscapeHtml(mesh.name)) + '<br /><br />';
             x += addHtmlValue("Connect360 Agent", '<a class=text-decoration-underline id=aginsw32lnk name="meshagents?id=3&meshid=' + meshid.split('/')[2] + '&installflags=0' + (urlargs.key ? ('&key=' + urlargs.key) : '') + '" title="' + "x86 32bit version of the MeshAgent" + '">' + "Windows x86-32 (.exe)" + '</a> <i class="fa-regular fa-clipboard" title="' + "Copy Windows x86 32bit agent URL to clipboard" + '" style=cursor:pointer onclick=copyAgentUrl("meshagents?id=3&meshid=' + meshid.split('/')[2] + '&installflags=",1)></i>', ['col-md-4', 'col-md-8']);
             x += addHtmlValue("Connect360 Agent", '<a class=text-decoration-underline id=aginsw64lnk name="meshagents?id=4&meshid=' + meshid.split('/')[2] + '&installflags=0' + (urlargs.key ? ('&key=' + urlargs.key) : '') + '" title="' + "x86 64bit version of the MeshAgent" + '">' + "Windows x86-64 (.exe)" + '</a> <i class="fa-regular fa-clipboard" title="' + "Copy Windows x86 64bit agent URL to clipboard" + '" style=cursor:pointer onclick=copyAgentUrl("meshagents?id=4&meshid=' + meshid.split('/')[2] + '&installflags=",1)></i>', ['col-md-4', 'col-md-8']);
             x += addHtmlValue("Connect360 Agent", '<a class=text-decoration-underline id=aginswa64lnk name="meshagents?id=43&meshid=' + meshid.split('/')[2] + '&installflags=0' + (urlargs.key ? ('&key=' + urlargs.key) : '') + '" title="' + "ARM 64bit version of the MeshAgent" + '">' + "Windows ARM-64 (.exe)" + '</a> <i class="fa-regular fa-clipboard" title="' + "Copy Windows ARM 64bit agent URL to clipboard" + '" style=cursor:pointer onclick=copyAgentUrl("meshagents?id=43&meshid=' + meshid.split('/')[2] + '&installflags=",1)></i>', ['col-md-4', 'col-md-8']);
@@ -6150,7 +6110,7 @@
             x += '<div style=font-size:x-small;float:right>' + "* For BSD, run \"pkg install wget sudo bash\" first." + '</div><a style=text-decoration:none title="' + "Copy to clipboard" + '" onclick=copyAgentIdValue("agins_linux_area")>' + "Copy" + ' <i class="fa-regular fa-clipboard" style=cursor:pointer></i></a></div>';
 
             // macOS agent install
-            x += '<div id=agins_osx style=display:none>' + format("To add a new computer to device group \"{0}\", download the mesh agent and install it the computer to manage. This agent installer has server and device group information embedded within it.", EscapeHtml(mesh.name)) + '<br /><br />';
+            x += '<div id=agins_osx style=display:none>' + format("To add a new computer to device group \"{0}\", download the connect360 agent and install it the computer to manage. This agent installer has server and device group information embedded within it.", EscapeHtml(mesh.name)) + '<br /><br />';
             x += addHtmlValue("Connect360 Agent", '<a class=text-decoration-underline onclick=downloadFile("meshosxagent?id=16&meshid=' + meshid.split('/')[2] + (urlargs.key ? ('&key=' + urlargs.key) : '') + '") title="' + "x86-64bit version of macOS Connect360 Agent" + '">' + "macOS x86-64bit" + '</a> <i class="fa-regular fa-clipboard" title="' + "Copy macOS agent URL to clipboard" + '" style=cursor:pointer onclick=copyAgentUrl("meshosxagent?id=16&meshid=' + meshid.split('/')[2] + '",0)></i>', ['col-md-4', 'col-md-8']);
             x += addHtmlValue("Connect360 Agent", '<a class=text-decoration-underline onclick=downloadFile("meshosxagent?id=29&meshid=' + meshid.split('/')[2] + (urlargs.key ? ('&key=' + urlargs.key) : '') + '") title="' + "ARM 64bit version of macOS Connect360 Agent" + '">' + "macOS ARM (64bit)" + '</a> <i class="fa-regular fa-clipboard" title="' + "Copy macOS agent URL to clipboard" + '" style=cursor:pointer onclick=copyAgentUrl("meshosxagent?id=29&meshid=' + meshid.split('/')[2] + '",0)></i>', ['col-md-4', 'col-md-8']);
             x += addHtmlValue("Connect360 Agent", '<a class=text-decoration-underline onclick=downloadFile("meshosxagent?id=10005&meshid=' + meshid.split('/')[2] + (urlargs.key ? ('&key=' + urlargs.key) : '') + '") title="' + "Universal version of macOS Connect360 Agent" + '">' + "macOS (Universal)" + '</a> <i class="fa-regular fa-clipboard" title="' + "Copy macOS agent URL to clipboard" + '" style=cursor:pointer onclick=copyAgentUrl("meshosxagent?id=10005&meshid=' + meshid.split('/')[2] + '",0)></i>', ['col-md-4', 'col-md-8']);
@@ -8203,6 +8163,30 @@
                     x += addDeviceAttribute("Description", description);
                 }
 
+                // Attribute: Warrany Status
+                var warrantyStatus = node.warranty ? EscapeHtml(node.warranty) : ('<i>' + "None" + '</i>');
+                if ((meshrights & 4) != 0) {
+                    x += addDeviceAttribute("Warranty Status", '<span onclick=showEditNodeValueDialog(4) style=cursor:pointer>' + warrantyStatus + ' <i class="fa-solid fa-pencil fa-xs" role="button"></i></span>');
+                } else {
+                    x += addDeviceAttribute("Warranty Status", warrantyStatus);
+                }
+
+                // Attribute: Purchase Date
+                var dateOfPurchase = node.purchase ? EscapeHtml(node.purchase) : ('<i>' + "None" + '</i>');
+                if ((meshrights & 4) != 0) {
+                    x += addDeviceAttribute("Date of Purchase", '<span onclick=showEditNodeValueDialog(5) style=cursor:pointer>' + dateOfPurchase + ' <i class="fa-solid fa-pencil fa-xs" role="button"></i></span>');
+                } else {
+                    x += addDeviceAttribute("Date of Purchase", dateOfPurchase);
+                }
+
+                // Attribute: Location
+                var nodeLocation = node.location ? EscapeHtml(node.location) : ('<i>' + "None" + '</i>');
+                if ((meshrights & 4) != 0) {
+                    x += addDeviceAttribute("Location", '<span onclick=showEditNodeValueDialog(6) style=cursor:pointer>' + nodeLocation + ' <i class="fa-solid fa-pencil fa-xs" role="button"></i></span>');
+                } else {
+                    x += addDeviceAttribute("Location", nodeLocation);
+                }
+
                 // IP-KVM / PDU information
                 if (node.mtype == 4) {
                     if (node.portnum != null) { x += addDeviceAttribute("Port Number", node.portnum); }
@@ -8378,7 +8362,7 @@
                 var connectivity = node.conn;
                 {{!-- if (connectivity && (connectivity > 1)) {
                     var cstate = [];
-                    if ((node.conn & 1) != 0) cstate.push('<span title="' + "Mesh agent is connected and ready for use." + '">' + "Connect360 Agent" + '</span>');
+                    if ((node.conn & 1) != 0) cstate.push('<span title="' + "Connect360 agent is connected and ready for use." + '">' + "Connect360 Agent" + '</span>');
                     if ((node.conn & 2) != 0) cstate.push('<span title="' + "Intel&reg; AMT CIRA is connected and ready for use." + '">' + "Intel&reg; AMT CIRA" + '</span>');
                     else if ((node.conn & 4) != 0) cstate.push('<span title="' + "Intel&reg; AMT is routable and ready for use." + '">' + "Intel&reg; AMT" + '</span>');
                     if ((node.conn & 8) != 0) cstate.push('<span title="' + "Mesh agent is reachable using another agent as relay." + '">' + "Mesh Relay" + '</span>');
@@ -8431,12 +8415,12 @@
                             }
                         }
                     }
-                    if ((serverinfo.guestdevicesharing !== false) && (node.agent != null) && (node.agent.caps & 3) && (connectivity & 1) && ((meshrights & 0x80008) == 0x80008) && ((meshrights == 0xFFFFFFFF) || ((meshrights & 0x1000) == 0))) {
+                    {{!-- if ((serverinfo.guestdevicesharing !== false) && (node.agent != null) && (node.agent.caps & 3) && (connectivity & 1) && ((meshrights & 0x80008) == 0x80008) && ((meshrights == 0xFFFFFFFF) || ((meshrights & 0x1000) == 0))) {
                         x += '<input type=button class="btn btn-primary btn-sm me-2" value="' + "Share" + '" title="' + "Create a link to share this device with a guest" + '" onclick=showShareDevice() />';
                         QV('DeskGuestShareButton', true);
                     } else {
                         QV('DeskGuestShareButton', false);
-                    }
+                    } --}}
                 }
                 if ((node.mtype == 4) && (connectivity & 1)) {
                     if (node.porttype == 'PDU') {
@@ -9223,21 +9207,7 @@
                 if (((currentNode.conn & 1) != 0) && ((rights & 131072) != 0)) { count++; y += '<option value=106>' + "Run Commands" + '</option>'; } // Remote command permission
                 if ((currentNode.conn != 0) && ((rights & 262144) != 0)) { count++; y += '<option value=4>' + "Sleep" + '</option><option value=3>' + "Reset" + '</option><option value=2>' + "Power off" + '</option>'; }
                 if ((currentNode.conn & 16) != 0) { count++; y += '<option value=103>' + "Send MQTT Message" + '</option>'; }
-                if ((currentNode.intelamt != null) && (currentNode.intelamt.state == 2) && ((currentNode.conn & 6) != 0) && ((rights & 262144) != 0)) {
-                    count++;
-                    y += '<option value=310>' + "Intel&reg; AMT Reset" + '</option>';
-                    y += '<option value=308>' + "Intel&reg; AMT Power off" + '</option>';
-                    if ((xxcurrentView == 11) || (xxcurrentView == 12)) { // Only show these options on terminal or desktop tabs
-                        y += '<option value=312>' + "Intel&reg; AMT Reset to BIOS" + '</option>';
-                        y += '<option value=311>' + "Intel&reg; AMT Power on to BIOS" + '</option>';
-                        y += '<option value=315>' + "Intel&reg; AMT Power on to PXE" + '</option>';
-                        y += '<option value=316>' + "Intel&reg; AMT Reset to PXE" + '</option>';
-                    }
-                }
-                if ((currentNode.intelamt != null) && (currentNode.intelamt.state == 2) && ((currentNode.conn & 6) != 0) && ((rights & 64) != 0)) {
-                    count++;
-                    y += '<option value=302>' + "Intel&reg; AMT Power on" + '</option>';
-                }
+                
                 if (((xxcurrentView == 11) || (xxcurrentView == 12)) && (getNodeAmtVersion(currentNode) >= 15) && (currentNode.intelamt.state == 2) && ((currentNode.conn & 6) != 0) && (rights == 0xFFFFFFFF) && ((features & 0x00000400) == 0)) { count++; y += '<option value=107>' + "Intel&reg; AMT One Click Recovery" + '</option>'; } // CIRA (2) or AMT (4) connected
                 if (((currentNode.conn & 1) != 0) && ((rights & 32768) != 0)) { count++; y += '<option value=104>' + "Uninstall Agent" + '</option>'; }
             }
@@ -9780,10 +9750,10 @@
         }
         function showClearRdpDialogEx(button, mode) { meshserver.send({ action: 'changedevice', nodeid: currentNode._id, rdp: 0 }); }
 
-        var showEditNodeValueDialog_modes = ["Device Name", "Hostname", "Description", "Tags"];
-        var showEditNodeValueDialog_modes2 = ['name', 'host', 'desc', 'tags'];
-        var showEditNodeValueDialog_modes3 = ['', '', '', "Tag1, Tag2, Tag3"];
-        var showEditNodeValueDialog_modes4 = [64, 64, 64, 4096];
+        var showEditNodeValueDialog_modes = ["Device Name", "Hostname", "Description", "Tags", "Warranty Status", "Date of Purchase", "Location"];
+        var showEditNodeValueDialog_modes2 = ['name', 'host', 'desc', 'tags', 'warranty', 'purchase', 'location'];
+        var showEditNodeValueDialog_modes3 = ['', '', '', "Tag1, Tag2, Tag3", ''];
+        var showEditNodeValueDialog_modes4 = [64, 64, 64, 4096, 4096];
         function showEditNodeValueDialog(mode) {
             if (xxdialogMode) return;
             var x = '';
@@ -14618,7 +14588,7 @@
                 x += addHtmlValue("Invite Codes", addLinkConditional(inviteCodeStr, 'p20editmeshInviteCode()', (meshrights & 1) || (icodes)));
             }
 
-            // If the Intel AMT manager is active on the server, show the Intel AMT policy edit box.
+            {{!-- // If the Intel AMT manager is active on the server, show the Intel AMT policy edit box.
             if ((currentMesh.mtype < 3) && ((features2 & 1) != 0)) {
                 // Intel AMT setup
                 var intelAmtPolicy = "No Policy";
@@ -14635,7 +14605,7 @@
                     }
                 }
                 x += addHtmlValue("Intel&reg; AMT", addLinkConditional(intelAmtPolicy, 'p20editMeshAmt()', meshrights & 1));
-            }
+            } --}}
 
             // Display device group note support
             if (meshrights & 1) { x += '<br><input type=button class="btn btn-primary btn-sm mb-1" value=' + "Notes" + ' title="' + "View notes about this device group" + '" onclick=showNotes(false,"' + encodeURIComponentEx(currentMesh._id) + '") />'; }
@@ -16634,7 +16604,7 @@
 
             // Display the users using the sorted list
             var x = '<table class="table table-hover" cellpadding=0 cellspacing=0>', addHeader = true;
-            x += '<th>' + "Name" + '<th style=width:80px>' + "Device Groups" + '<th style=width:120px>' + nobreak("Last Access") + '<th style=width:120px>' + "Permissions";
+            x += '<th>' + "Name" + '<th style=width:120px>' + nobreak("Device Groups") + '<th style=width:120px>' + nobreak("Last Access") + '<th style=width:120px>' + "Permissions" + '<th style=width:120px>' + nobreak("Expiry Date") + '<th style=width:120px>' + nobreak("Device Limit");
 
             // Save the list of currently checked users
             var checkedUserids = [], elements = document.getElementsByClassName('UserCheckbox');
@@ -16649,7 +16619,7 @@
                         ((emailSearch != null) && ((user.email != null) && (user.email.toLowerCase().indexOf(emailSearch) >= 0))))
                 ) {
                     if (maxUsers > 0) {
-                        if (addHeader) { x += '<tr><td class=userTableHeader colspan=4>' + "Online Users"; addHeader = false; }
+                        if (addHeader) { x += '<tr><td class=userTableHeader colspan=7>' + "Online Users"; addHeader = false; }
                         x += addUserHtml(user, sessions);
                         maxUsers--;
                     } else {
@@ -16667,7 +16637,7 @@
                         ((emailSearch != null) && ((user.email != null) && (user.email.toLowerCase().indexOf(emailSearch) >= 0))))
                 ) {
                     if (maxUsers > 0) {
-                        if (addHeader) { x += '<tr><td class=userTableHeader colspan=4>' + "Offline Users"; addHeader = false; }
+                        if (addHeader) { x += '<tr><td class=userTableHeader colspan=7>' + "Offline Users"; addHeader = false; }
                         x += addUserHtml(user, sessions);
                         maxUsers--;
                     } else {
@@ -18603,7 +18573,7 @@
                     var recdate = null;
                     for (var i in p52recordings) {
                         var rec = p52recordings[i], rect = new Date(rec.startTime), day = printDate(rect);
-                        if (day != recdate) { recdate = day; x += '<tr><td class=userTableHeader colspan=4>' + day; }
+                        if (day != recdate) { recdate = day; x += '<tr><td class=userTableHeader colspan=7>' + day; }
                         x += addRecordingHtml(i, rec);
                     }
                 }
@@ -19421,26 +19391,15 @@
                 ServerState: "Server State",
                 AgentErrorCounters: "Agent Error Counters",
                 UnknownGroup: "Unknown Group",
-                InvalidPKCSsignature: "Invalid PKCS signature",
-                InvalidRSAsignature: "Invalid RSA signature",
-                InvalidJSON: "Invalid JSON",
-                UnknownAction: "Unknown Action",
-                BadWebCertificate: "Bad Web Certificate",
-                BadSignature: "Bad Signature",
                 MaxSessionsReached: "Max Sessions Reached",
                 UnknownDeviceGroup: "Unknown Device Group",
                 InvalidDeviceGroupType: "Invalid Device Group Type",
                 DuplicateAgent: "Duplicate Agent",
-                ConnectedIntelAMT: "Connected Intel&reg; AMT",
-                ConnectedIntelAMTCira: "Connected Intel&reg; AMT CIRA",
-                RelayErrors: "Relay Errors",
                 UserAccounts: "User Accounts",
                 DeviceGroups: "Device Groups",
                 AgentSessions: "Agent Sessions",
                 ConnectedUsers: "Connected Users",
-                UsersSessions: "Users Sessions",
-                RelaySessions: "Relay Sessions",
-                RelayCount: "Relay Count"
+                UsersSessions: "Users Sessions"
             };
 
             setupGeneralServerStats();
@@ -20031,7 +19990,7 @@
             }
 
             // Remove left bar selection
-            var leftBarItems = ['LeftMenuMyDevices', 'LeftMenuMyAccount', 'LeftMenuMyEvents', 'LeftMenuMyFiles', 'LeftMenuMyUsers', 'LeftMenuMyServer'];
+            var leftBarItems = ['LeftMenuMyDevices', 'LeftMenuMyAccount', 'LeftMenuMyEvents', 'LeftMenuMyUsers', 'LeftMenuMyServer'];
             for (var i in leftBarItems) {
                 QC(leftBarItems[i]).remove('lbbuttonsel');
                 QC(leftBarItems[i]).remove('lbbuttonsel2');
@@ -20063,7 +20022,6 @@
             } else if (x == 5) {
                 // My Files
                 QC('MainMenuMyFiles').add(mainMenuActiveClass);
-                QC('LeftMenuMyFiles').add(leftMenuActiveClass);
             } else if ((x == 6) || (x == 115) || (x >= 40 && x < 50)) {
                 // My Server
                 QC('MainMenuMyServer').add(mainMenuActiveClass);

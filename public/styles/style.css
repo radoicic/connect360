@@ -426,7 +426,11 @@ body {
     color: blue;
 }
 
-#loginpanel, #createpanel, #resetpanel, #tokenpanel, #resettokenpanel, #resetpasswordpanel, #resetpasswordpanel, #checkemailpanel, #waitpushpanel {
+<<<<<<< HEAD
+#resetpanel, #tokenpanel, #resettokenpanel, #resetpasswordpanel, #resetpasswordpanel, #checkemailpanel, #waitpushpanel {
+=======
+#createpanel, #resetpanel, #tokenpanel, #resettokenpanel, #resetpasswordpanel, #resetpasswordpanel, #checkemailpanel, #waitpushpanel {
+>>>>>>> 8cff76d45355610a8f953119794986db3003ae1a
     display: inline-block;
     margin: 0;
     background-color: #979797;

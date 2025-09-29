@@ -25,16 +25,16 @@
             "companyName": "Connect360 Company",
             "serviceName": "Connect360 Service",
             "fileName": "Connect360_Agent",
-            "foregroundColor": "#FFA500",
-            "backgroundColor": "#000000"
+            "image" : "logo.jpg",
+            "foregroundColor": "#123461",
+            "backgroundColor": "#ffffff"
         }
     }
   },
-  "_letsencrypt": {
+  "letsencrypt": {
     "__comment__": "Requires NodeJS 8.x or better, Go to https://letsdebug.net/ first before trying Let's Encrypt.",
-    "email": "myemail@mydomain.com",
-    "names": "myserver.mydomain.com",
-    "skipChallengeVerification": true,
-    "production": false
+    "email": "test@gmail.com",
+    "names": "",
+    "skipChallengeVerification": true
   }
 }

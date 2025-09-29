@@ -130,7 +130,7 @@ module.exports.CreateRedirServer = function (parent, db, args, func) {
     function CheckListenPort(port, addr, func) {
         var s = obj.net.createServer(function (socket) { });
         obj.tcpServer = s.listen(port, addr, function () { s.close(function () { if (func) { func(port, addr); } }); }).on("error", function (err) {
-            if (args.exactports) { console.error("ERROR: MeshCentral HTTP server port " + port + " not available."); process.exit(); }
+            if (args.exactports) { console.error("ERROR: Connect360 HTTP server port " + port + " not available."); process.exit(); }
             else { if (port < 65535) { CheckListenPort(port + 1, addr, func); } else { if (func) { func(0); } } }
         });
     }
@@ -140,7 +140,7 @@ module.exports.CreateRedirServer = function (parent, db, args, func) {
         if (port == 0 || port == 65535) { return; }
         obj.tcpServer = obj.app.listen(port, addr, function () {
             obj.port = port;
-            console.log("MeshCentral HTTP redirection server running on port " + port + ".");
+            console.log("Connect360 HTTP redirection server running on port " + port + ".");
             obj.parent.authLog('http', 'Server listening on ' + ((addr != null)?addr:'0.0.0.0') + ' port ' + port + '.');
             obj.parent.updateServerState('redirect-port', port);
             func(obj.port);

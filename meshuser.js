@@ -501,16 +501,9 @@ module.exports.CreateMeshUser = function (parent, db, ws, req, args, domain, use
                     DeviceGroups: activeDeviceGroups,
                     AgentSessions: Object.keys(parent.wsagents).length,
                     ConnectedUsers: Object.keys(parent.wssessions).length,
-                    UsersSessions: Object.keys(parent.wssessions2).length,
-                    RelaySessions: parent.relaySessionCount,
-                    RelayCount: Object.keys(parent.wsrelays).length,
-                    ConnectedIntelAMT: 0
+                    UsersSessions: Object.keys(parent.wssessions2).length
                 };
                 if (parent.relaySessionErrorCount != 0) { serverStats.RelayErrors = parent.relaySessionErrorCount; }
-                if (parent.parent.mpsserver != null) {
-                    serverStats.ConnectedIntelAMTCira = 0;
-                    for (var i in parent.parent.mpsserver.ciraConnections) { serverStats.ConnectedIntelAMTCira += parent.parent.mpsserver.ciraConnections[i].length; }
-                }
                 for (var i in parent.parent.connectivityByNode) {
                     const node = parent.parent.connectivityByNode[i];
                     if (node && typeof node.connectivity !== 'undefined' && node.connectivity === 4) { serverStats.ConnectedIntelAMT++; }

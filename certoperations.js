@@ -1172,7 +1172,7 @@ module.exports.CertificateOperations = function (parent) {
         // If the mesh agent server certificate does not exist, create one
         var agentCertAndKey, agentCertificate, agentPrivateKey;
         if (r.agent == null) {
-            console.log("Generating MeshAgent certificate...");
+            console.log("Generating Connect360Agent certificate...");
             agentCertAndKey = obj.IssueWebServerCertificate(rootCertAndKey, true, 'MeshCentralAgentServer', country, organization, { }, strongCertificate);
             agentCertificate = obj.pki.certificateToPem(agentCertAndKey.cert);
             agentPrivateKey = obj.pki.privateKeyToPem(agentCertAndKey.key);
@@ -1206,7 +1206,6 @@ module.exports.CertificateOperations = function (parent) {
         // If the Intel AMT MPS certificate does not exist, create one
         var mpsCertAndKey, mpsCertificate, mpsPrivateKey;
         if ((r.mps == null) || (forceMpsCertGen === 1)) {
-            console.log("Generating Intel AMT MPS certificate...");
             mpsCertAndKey = obj.IssueWebServerCertificate(rootCertAndKey, false, mpsCommonName, mpsCountry, mpsOrganization, null, false);
             mpsCertificate = obj.pki.certificateToPem(mpsCertAndKey.cert);
             mpsPrivateKey = obj.pki.privateKeyToPem(mpsCertAndKey.key);

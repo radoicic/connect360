@@ -1,5 +1,5 @@
 /**
-* @description MeshCentral web server
+* @description Connect360 web server
 * @author Ylian Saint-Hilaire
 * @copyright Intel Corporation 2018-2022
 * @license Apache-2.0
@@ -3457,7 +3457,7 @@ module.exports.CreateWebServer = function (parent, db, args, certificates, doneF
             getRenderPage((domain.sitestyle >= 2) ? 'login2' : 'login', req, domain),
             getRenderArgs({
                 loginmode: loginmode,
-                rootCertLink: getRootCertLink(domain),
+                // rootCertLink: getRootCertLink(domain),
                 newAccount: newAccountsAllowed, // True if new accounts are allowed from the login page
                 newAccountPass: (((domain.newaccountspass == null) || (domain.newaccountspass == '')) ? 0 : 1), // 1 if new account creation requires password
                 newAccountCaptcha: newAccountCaptcha, // If new account creation requires a CAPTCHA, this string will not be empty
@@ -4351,7 +4351,7 @@ module.exports.CreateWebServer = function (parent, db, args, certificates, doneF
         if ((urlName == null) || (domain.redirects[urlName] == null) || (urlName[0] == '_')) { res.sendStatus(404); return; }
         if (domain.redirects[urlName] == '~showversion') {
             // Show the current version
-            res.end('MeshCentral v' + obj.parent.currentVer);
+            res.end('Connect360 v' + obj.parent.currentVer);
         } else {
             // Perform redirection
             res.redirect(domain.redirects[urlName] + urlArgs + getQueryPortion(req));
@@ -5746,7 +5746,7 @@ module.exports.CreateWebServer = function (parent, db, args, certificates, doneF
                 var xdomain = (domain.dns == null) ? domain.id : '';
                 if (xdomain != '') xdomain += '/';
                 var meshsettings = '';
-                if (req.query.ac != '4') { // If MeshCentral Assistant Monitor Mode, DONT INCLUDE SERVER DETAILS!
+                if (req.query.ac != '4') { // If Connect360 Assistant Monitor Mode, DONT INCLUDE SERVER DETAILS!
                     meshsettings += '\r\nMeshName=' + mesh.name + '\r\nMeshType=' + mesh.mtype + '\r\nMeshID=0x' + meshidhex + '\r\nServerID=' + serveridhex + '\r\n';
                     if (obj.args.lanonly != true) { meshsettings += 'MeshServer=wss://' + serverName + ':' + httpsPort + '/' + xdomain + 'agent.ashx\r\n'; } else {
                         meshsettings += 'MeshServer=local\r\n';
@@ -5756,7 +5756,7 @@ module.exports.CreateWebServer = function (parent, db, args, certificates, doneF
                     if ((req.query.installflags != null) && (req.query.installflags != 0) && (parseInt(req.query.installflags) == req.query.installflags)) { meshsettings += 'InstallFlags=' + parseInt(req.query.installflags) + '\r\n'; }
                 }
                 if (req.query.id == '10006') { // Assistant settings and customizations
-                    if ((req.query.ac != null)) { meshsettings += 'AutoConnect=' + req.query.ac + '\r\n'; } // Set MeshCentral Assistant flags if needed. 0x01 = Always Connected, 0x02 = Not System Tray
+                    if ((req.query.ac != null)) { meshsettings += 'AutoConnect=' + req.query.ac + '\r\n'; } // Set Connect360 Assistant flags if needed. 0x01 = Always Connected, 0x02 = Not System Tray
                     if (obj.args.assistantconfig) { for (var i in obj.args.assistantconfig) { meshsettings += obj.args.assistantconfig[i] + '\r\n'; } }
                     if (domain.assistantconfig) { for (var i in domain.assistantconfig) { meshsettings += domain.assistantconfig[i] + '\r\n'; } }
                     if ((domain.assistantnoproxy === true) || (obj.args.lanonly == true)) { meshsettings += 'ignoreProxyFile=1\r\n'; }
@@ -5787,7 +5787,7 @@ module.exports.CreateWebServer = function (parent, db, args, certificates, doneF
                         if (domain.agentcustomization.foregroundcolor != null) { meshsettings += checkAgentColorString('foreground=', domain.agentcustomization.foregroundcolor); }
                         if (domain.agentcustomization.backgroundcolor != null) { meshsettings += checkAgentColorString('background=', domain.agentcustomization.backgroundcolor); }
                     }
-                    if (domain.agentTranslations != null) { meshsettings += 'translation=' + domain.agentTranslations + '\r\n'; } // Translation strings, not for MeshCentral Assistant
+                    if (domain.agentTranslations != null) { meshsettings += 'translation=' + domain.agentTranslations + '\r\n'; } // Translation strings, not for Connect360 Assistant
                 }
                 setContentDispositionHeader(res, 'application/octet-stream', meshfilename, null, argentInfo.rname);
                 if (argentInfo.mtime != null) { res.setHeader('Last-Modified', argentInfo.mtime.toUTCString()); }
@@ -6265,7 +6265,7 @@ module.exports.CreateWebServer = function (parent, db, args, certificates, doneF
                             readStream.on('data', function (data) { if (readStream.xxdata) { readStream.xxdata += data; } else { readStream.xxdata = data; } });
                             readStream.on('end', function () {
                                 var meshname = mesh.name.split(']').join('').split('[').join(''); // We can't have ']]' in the string since it will terminate the CDATA.
-                                var welcomemsg = 'Welcome to the MeshCentral agent for MacOS\n\nThis installer will install the mesh agent for "' + meshname + '" and allow the administrator to remotely monitor and control this computer over the internet. For more information, go to https://meshcentral.com.\n\nThis software is provided under Apache 2.0 license.\n';
+                                var welcomemsg = 'Welcome to the Connect360agent for MacOS\n\nThis installer will install the mesh agent for "' + meshname + '" and allow the administrator to remotely monitor and control this computer over the internet. For more information, go to https://meshcentral.com.\n\nThis software is provided under Apache 2.0 license.\n';
                                 var installsize = Math.floor((argentInfo.size + meshsettings.length) / 1024);
                                 archive.append(readStream.xxdata.toString().split('###DISPLAYNAME###').join(meshdisplayname).split('###WELCOMEMSG###').join(welcomemsg).split('###INSTALLSIZE###').join(installsize), { name: entry.fileName.replace('MeshAgent.mpkg',meshmpkgname) });
                                 zipfile.readEntry();
@@ -8674,7 +8674,7 @@ module.exports.CreateWebServer = function (parent, db, args, certificates, doneF
     function CheckListenPort(port, addr, func) {
         var s = obj.net.createServer(function (socket) { });
         obj.tcpServer = s.listen(port, addr, function () { s.close(function () { if (func) { func(port, addr); } }); }).on('error', function (err) {
-            if (args.exactports) { console.error('ERROR: MeshCentral HTTPS server port ' + port + ' not available.'); process.exit(); }
+            if (args.exactports) { console.error('ERROR: Connect360 HTTPS server port ' + port + ' not available.'); process.exit(); }
             else { if (port < 65535) { CheckListenPort(port + 1, addr, func); } else { if (func) { func(0); } } }
         });
     }
@@ -8685,11 +8685,11 @@ module.exports.CreateWebServer = function (parent, db, args, certificates, doneF
         obj.args.port = port;
         if (obj.tlsServer != null) {
             if (obj.args.lanonly == true) {
-                obj.tcpServer = obj.tlsServer.listen(port, addr, function () { console.log('MeshCentral HTTPS server running on port ' + port + ((typeof args.aliasport == 'number') ? (', alias port ' + args.aliasport) : '') + '.'); });
+                obj.tcpServer = obj.tlsServer.listen(port, addr, function () { console.log('Connect360 HTTPS server running on port ' + port + ((typeof args.aliasport == 'number') ? (', alias port ' + args.aliasport) : '') + '.'); });
             } else {
                 obj.tcpServer = obj.tlsServer.listen(port, addr, function () {
-                    console.log('MeshCentral HTTPS server running on ' + certificates.CommonName + ':' + port + ((typeof args.aliasport == 'number') ? (', alias port ' + args.aliasport) : '') + '.');
-                    if (args.relaydns != null) { console.log('MeshCentral HTTPS relay server running on ' + args.relaydns[0] + ':' + port + ((typeof args.aliasport == 'number') ? (', alias port ' + args.aliasport) : '') + '.'); }
+                    console.log('Connect360 HTTPS server running on ' + certificates.CommonName + ':' + port + ((typeof args.aliasport == 'number') ? (', alias port ' + args.aliasport) : '') + '.');
+                    if (args.relaydns != null) { console.log('Connect360 HTTPS relay server running on ' + args.relaydns[0] + ':' + port + ((typeof args.aliasport == 'number') ? (', alias port ' + args.aliasport) : '') + '.'); }
                 });
                 obj.parent.updateServerState('servername', certificates.CommonName);
             }
@@ -8698,8 +8698,8 @@ module.exports.CreateWebServer = function (parent, db, args, certificates, doneF
             if (args.aliasport != null) { obj.parent.updateServerState('https-aliasport', args.aliasport); }
         } else {
             obj.tcpServer = obj.app.listen(port, addr, function () {
-                console.log('MeshCentral HTTP server running on port ' + port + ((typeof args.aliasport == 'number') ? (', alias port ' + args.aliasport) : '') + '.');
-                if (args.relaydns != null) { console.log('MeshCentral HTTP relay server running on ' + args.relaydns[0] + ':' + port + ((typeof args.aliasport == 'number') ? (', alias port ' + args.aliasport) : '') + '.'); }
+                console.log('Connect360 HTTP server running on port ' + port + ((typeof args.aliasport == 'number') ? (', alias port ' + args.aliasport) : '') + '.');
+                if (args.relaydns != null) { console.log('Connect360 HTTP relay server running on ' + args.relaydns[0] + ':' + port + ((typeof args.aliasport == 'number') ? (', alias port ' + args.aliasport) : '') + '.'); }
             });
             obj.parent.updateServerState('http-port', port);
             if (args.aliasport != null) { obj.parent.updateServerState('http-aliasport', args.aliasport); }
@@ -8710,7 +8710,7 @@ module.exports.CreateWebServer = function (parent, db, args, certificates, doneF
             var expectedPort = obj.parent.config.settings.port ? obj.parent.config.settings.port : 443;
             if ((expectedPort != port) && (port >= 1024) && (port < 1034)) {
                 console.log('');
-                console.log('WARNING: MeshCentral is running without permissions to use ports below 1025.');
+                console.log('WARNING: Connect360 is running without permissions to use ports below 1025.');
                 console.log('         Use setcap to grant access to lower ports, or read installation guide.');
                 console.log('');
                 console.log('   sudo setcap \'cap_net_bind_service=+ep\' `which node` \r\n');
@@ -8728,14 +8728,14 @@ module.exports.CreateWebServer = function (parent, db, args, certificates, doneF
         if (args.agentaliasdns != null) { agentAliasDns = args.agentaliasdns; }
         if (obj.tlsAltServer != null) {
             if (obj.args.lanonly == true) {
-                obj.tcpAltServer = obj.tlsAltServer.listen(port, addr, function () { console.log('MeshCentral HTTPS agent-only server running on port ' + port + ((agentAliasPort != null) ? (', alias port ' + agentAliasPort) : '') + '.'); });
+                obj.tcpAltServer = obj.tlsAltServer.listen(port, addr, function () { console.log('Connect360 HTTPS agent-only server running on port ' + port + ((agentAliasPort != null) ? (', alias port ' + agentAliasPort) : '') + '.'); });
             } else {
-                obj.tcpAltServer = obj.tlsAltServer.listen(port, addr, function () { console.log('MeshCentral HTTPS agent-only server running on ' + ((agentAliasDns != null) ? agentAliasDns : certificates.CommonName) + ':' + port + ((agentAliasPort != null) ? (', alias port ' + agentAliasPort) : '') + '.'); });
+                obj.tcpAltServer = obj.tlsAltServer.listen(port, addr, function () { console.log('Connect360 HTTPS agent-only server running on ' + ((agentAliasDns != null) ? agentAliasDns : certificates.CommonName) + ':' + port + ((agentAliasPort != null) ? (', alias port ' + agentAliasPort) : '') + '.'); });
             }
             obj.parent.debug('https', 'Server listening on 0.0.0.0 port ' + port + '.');
             obj.parent.updateServerState('https-agent-port', port);
         } else {
-            obj.tcpAltServer = obj.agentapp.listen(port, addr, function () { console.log('MeshCentral HTTP agent-only server running on port ' + port + ((agentAliasPort != null) ? (', alias port ' + agentAliasPort) : '') + '.'); });
+            obj.tcpAltServer = obj.agentapp.listen(port, addr, function () { console.log('Connect360 HTTP agent-only server running on port ' + port + ((agentAliasPort != null) ? (', alias port ' + agentAliasPort) : '') + '.'); });
             obj.parent.updateServerState('http-agent-port', port);
         }
     }
